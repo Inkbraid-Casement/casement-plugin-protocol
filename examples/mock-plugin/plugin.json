@@ -1,0 +1,20 @@
+{
+  "format": "casement-plugin",
+  "version": 1,
+  "id": "mock",
+  "name": "Mock plugin",
+  "description": "A test pattern for Casement's tests",
+  "program": "python",
+  "args": ["-I", "-u", "mock_plugin.py"],
+  "capabilities": ["password", "clipboard", "cursor"],
+  "connections": [
+    {
+      "scheme": "mock",
+      "name": "Mock test pattern",
+      "fields": [
+        { "name": "name", "label": "Name", "part": "host", "type": "text", "required": true, "placeholder": "demo" },
+        { "name": "expect", "label": "Password the mock expects", "part": "query", "type": "text", "placeholder": "secret" }
+      ]
+    }
+  ]
+}
