@@ -28,13 +28,13 @@ open or closed, and Casement works the same without any plugins installed.
 
 | Plugin | Connects to | Address | Protocol | Licence | Download |
 |---|---|---|---|---|---|
-| [RustDesk](https://github.com/Inkbraid/casement-plugin-rustdesk) | RustDesk peers, through a self-hosted ID and relay server | `rustdesk://` | 1 | AGPL-3.0 | [Latest release](https://github.com/Inkbraid/casement-plugin-rustdesk/releases/latest) |
-| [JetKVM](https://github.com/Inkbraid/casement-plugin-jetkvm) | JetKVM devices on the local network | `jetkvm://` | 1 | GPL-2.0-only | [Latest release](https://github.com/Inkbraid/casement-plugin-jetkvm/releases/latest) |
-| [MeshCentral](https://github.com/Inkbraid/casement-plugin-meshcentral) | Devices managed by a MeshCentral server, through their agents | `meshcentral://` | 1 | Apache-2.0 | [Latest release](https://github.com/Inkbraid/casement-plugin-meshcentral/releases/latest) |
-| [VMware console](https://github.com/Inkbraid/casement-plugin-webmks) | Virtual machine consoles on ESXi and vCenter Server (WebMKS) | `vmware://` | 1 | GPL-2.0-or-later | [Latest release](https://github.com/Inkbraid/casement-plugin-webmks/releases/latest) |
-| [Moonlight](https://github.com/Inkbraid/casement-plugin-moonlight) | Desktop and game streaming from Sunshine and GeForce Experience hosts | `moonlight://` | 1 | GPL-3.0-or-later | [Latest release](https://github.com/Inkbraid/casement-plugin-moonlight/releases/latest) |
-| [Mosh](https://github.com/Inkbraid/casement-plugin-mosh) | Mosh shells, with `mosh-server` started over SSH | `mosh://` | 2 | GPL-3.0-or-later with the OpenSSL exception | [Latest release](https://github.com/Inkbraid/casement-plugin-mosh/releases/latest) |
-| [X2Go](https://github.com/Inkbraid/casement-plugin-x2go) | X2Go desktop sessions (KDrive) over SSH | `x2go://` | 1 | GPL-3.0-or-later | [Latest release](https://github.com/Inkbraid/casement-plugin-x2go/releases/latest) |
+| [RustDesk](https://github.com/Inkbraid-Casement/casement-plugin-rustdesk) | RustDesk peers, through a self-hosted ID and relay server | `rustdesk://` | 1 | AGPL-3.0 | [Latest release](https://github.com/Inkbraid-Casement/casement-plugin-rustdesk/releases/latest) |
+| [JetKVM](https://github.com/Inkbraid-Casement/casement-plugin-jetkvm) | JetKVM devices on the local network | `jetkvm://` | 1 | GPL-2.0-only | [Latest release](https://github.com/Inkbraid-Casement/casement-plugin-jetkvm/releases/latest) |
+| [MeshCentral](https://github.com/Inkbraid-Casement/casement-plugin-meshcentral) | Devices managed by a MeshCentral server, through their agents | `meshcentral://` | 1 | Apache-2.0 | [Latest release](https://github.com/Inkbraid-Casement/casement-plugin-meshcentral/releases/latest) |
+| [VMware console](https://github.com/Inkbraid-Casement/casement-plugin-webmks) | Virtual machine consoles on ESXi and vCenter Server (WebMKS) | `vmware://` | 1 | GPL-2.0-or-later | [Latest release](https://github.com/Inkbraid-Casement/casement-plugin-webmks/releases/latest) |
+| [Moonlight](https://github.com/Inkbraid-Casement/casement-plugin-moonlight) | Desktop and game streaming from Sunshine and GeForce Experience hosts | `moonlight://` | 1 | GPL-3.0-or-later | [Latest release](https://github.com/Inkbraid-Casement/casement-plugin-moonlight/releases/latest) |
+| [Mosh](https://github.com/Inkbraid-Casement/casement-plugin-mosh) | Mosh shells, with `mosh-server` started over SSH | `mosh://` | 2 | GPL-3.0-or-later with the OpenSSL exception | [Latest release](https://github.com/Inkbraid-Casement/casement-plugin-mosh/releases/latest) |
+| [X2Go](https://github.com/Inkbraid-Casement/casement-plugin-x2go) | X2Go desktop sessions (KDrive) over SSH | `x2go://` | 1 | GPL-3.0-or-later | [Latest release](https://github.com/Inkbraid-Casement/casement-plugin-x2go/releases/latest) |
 
 Each release has a zip with the plugin's folder. To install a plugin, unpack
 it into `%LOCALAPPDATA%\Casement\plugins\`, so that

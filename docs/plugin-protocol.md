@@ -44,7 +44,7 @@ at startup.
   "icon": "icon.png",
   "program": "casement-rustdesk.exe",
   "args": [],
-  "homepage": "https://github.com/Inkbraid/casement-plugin-rustdesk",
+  "homepage": "https://github.com/Inkbraid-Casement/casement-plugin-rustdesk",
   "capabilities": ["password", "clipboard", "cursor"],
   "connections": [
     {
