@@ -36,10 +36,14 @@ open or closed, and Casement works the same without any plugins installed.
 | [Mosh](https://github.com/Inkbraid-Casement/casement-plugin-mosh) | Mosh shells, with `mosh-server` started over SSH | `mosh://` | 2 | GPL-3.0-or-later with the OpenSSL exception | [Latest release](https://github.com/Inkbraid-Casement/casement-plugin-mosh/releases/latest) |
 | [X2Go](https://github.com/Inkbraid-Casement/casement-plugin-x2go) | X2Go desktop sessions (KDrive) over SSH | `x2go://` | 1 | GPL-3.0-or-later | [Latest release](https://github.com/Inkbraid-Casement/casement-plugin-x2go/releases/latest) |
 
-Each release has a zip with the plugin's folder. To install a plugin, unpack
-it into `%LOCALAPPDATA%\Casement\plugins\`, so that
-`%LOCALAPPDATA%\Casement\plugins\<plugin>\plugin.json` exists, and restart
-Casement. **Plugins…** in Casement's main menu lists the installed plugins.
+Each release has a zip with the plugin's folder. From version 0.7.5,
+Casement's Plugins window (**Plugins…** in its main menu) lists the plugins
+of this organization, installs them from their releases, and offers updates.
+A zip can also be installed there with **Install from a zip file…**, or
+unpacked by hand into `%LOCALAPPDATA%\Casement\plugins\`, so that
+`%LOCALAPPDATA%\Casement\plugins\<plugin>\plugin.json` exists, followed by
+a restart of Casement. How a plugin is published so that the Plugins window
+finds it is in the spec, under Publishing a plugin.
 
 Mosh shows a terminal rather than a picture, so it needs protocol version 2
 with a terminal view, a proposed addition its repository describes in

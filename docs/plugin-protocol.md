@@ -30,7 +30,52 @@ whatever the plugin needs to run:
 
 The environment variable `CASEMENT_PLUGINS` can point to a different
 plugins folder, for tests and portable setups. Casement reads the manifests
-at startup.
+at startup, and a plugin's when it installs it.
+
+A release is a zip file holding that folder (or its contents, with
+`plugin.json` at the root). Casement's Plugins window installs one from a
+release on GitHub (see [Publishing a plugin](#publishing-a-plugin)), from a
+zip at hand (**Install from a zip file…**), or when the zip is opened with
+Casement: it checks the manifest, shows what the plugin is, and unpacks it
+into the plugins folder under the plugin's `id`, replacing an installed
+plugin with the same `id` once nothing uses it (changed connection types
+and fields show after Casement restarts).
+
+## Publishing a plugin
+
+Casement's Plugins window lists the plugins of feeds: GitHub organizations
+and accounts, Inkbraid-Casement first, more as the user adds them. A plugin
+it can find, install and keep up to date is:
+
+- **A repository whose name starts with `casement-plugin`**, such as
+  `casement-plugin-rustdesk`, owned by the feed's organization or account,
+  public and not archived.
+- **Its latest release**, not a draft or a pre-release. Its tag is the
+  plugin's version, such as `v0.2.0`; Casement compares tags as versions
+  (`v0.10.0` is newer than `v0.9.2`, `1.0.0` newer than `1.0.0-rc1`) to tell
+  whether an installed plugin is out of date.
+- **A zip for Windows attached to that release**, named
+  `casement-<id>-<tag>-windows-x64.zip`, for example
+  `casement-rustdesk-v0.2.0-windows-x64.zip`, which Casement takes first.
+  Otherwise it takes a zip ending in `-windows-x64.zip`, then one whose name
+  says Windows and x64 (`win64`, `windows-amd64`, `win32-x64`, …), and
+  failing that the only zip whose name says no other system or processor.
+  Zips of source code, symbols or debug files are passed over, judged by the
+  words after the tag. Casement checks the download against the SHA-256
+  that GitHub lists for it. The name also tells Casement the version of a
+  zip that is installed by hand.
+- **`plugin.json` at the top of the repository**, as it is in the zip.
+  Casement reads it at the release's tag, or on the default branch before
+  the first release, to show the plugin's name, description and connection
+  types before anything is downloaded. A repository with neither this file
+  nor a zip for Windows isn't listed: it is taken for something else, such
+  as the protocol's own repository.
+
+A workflow that builds on pushed `v*` tags and attaches the zip to the
+release does all of this; the plugins in Inkbraid-Casement each have one
+(`.github/workflows/release.yml`). Casement keeps what it installed in a
+file of its own in the plugin's folder, `.casement-release.json`; a plugin
+shouldn't ship one.
 
 ## Manifest
 
@@ -102,7 +147,7 @@ Each entry in `connections` is one connection type:
 
 | Member | Required | Description |
 |---|---|---|
-| `scheme` | yes | The address scheme, for example `rustdesk` for `rustdesk://…` addresses. Lower case. Casement's own schemes (`spice`, `spice+tls`, `vnc`, `rdp`, `ssh`, `telnet`, `serial`, `shell`, `nanokvm`, `glkvm`, `http`, `https`) can't be used. |
+| `scheme` | yes | The address scheme, for example `rustdesk` for `rustdesk://…` addresses. Lower case. Casement's own schemes can't be used: `spice`, `spice+tls`, `spice+ws`, `spice+wss`, `vnc`, `vnc+ws`, `vnc+wss`, `rdp`, `ssh`, `telnet`, `serial`, `shell`, `rfc2217`, `tcp`, `nanokvm`, `glkvm`, `tinypilot`, `libvirt`, `proxmox`, `truenas`, `xo`, `guacamole`, `http`, `https`. |
 | `name` | yes | Shown in the New connection dialog. |
 | `icon` | no | A PNG for this connection type, if it differs from the plugin's icon. |
 | `fields` | yes | The values that make up an address, in the order the dialog shows them. |
@@ -165,7 +210,7 @@ Both sides ignore unknown message types and unknown members.
 
 ### Start
 
-1. Casement → `{"type": "hello", "protocol": 1, "app": "Casement 0.7.0"}`
+1. Casement → `{"type": "hello", "protocol": 1, "app": "Casement 0.7.5"}`
 2. Plugin → `{"type": "hello", "protocol": 1, "name": "RustDesk", "version": "0.1.0", "capabilities": ["password", "clipboard", "cursor"]}`,
    within 10 seconds. If the plugin doesn't support the version Casement
    sent, it answers with the highest version it supports, and Casement
